@@ -1,7 +1,6 @@
-const fetchProducts = async (query) => {
-  const url = `https://api.mercadolibre.com/sites/MLB/search?q=$QUERY=${query}`;
-  return (fetch(url))
-  .then((response) => response.json())
+const fetchProducts = (product) => {
+  fetch(`https://api.mercadolibre.com/sites/MLB/search?q=${product}`)
+  .then((results) => results.json())
   .catch((error) => error);
 };
 
