@@ -45,7 +45,7 @@ function createProductItemElement({ sku, name, image }) {
   btAddCart.addEventListener('click', () => fetchItemResults(sku));
 
   section.appendChild(btAddCart);
-
+  fetchProducts();
   return section;
 }
 

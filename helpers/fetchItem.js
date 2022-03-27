@@ -1,5 +1,5 @@
-const fetchItem = (itemId) => {
-  fetch(`https://api.mercadolibre.com/items/${itemId}`)
+const fetchItem = (ItemID) => {
+  fetch(`https://api.mercadolibre.com/items/${ItemID}`)
   .then((response) => response.json())
   .catch((error) => error); 
 };
