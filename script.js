@@ -24,11 +24,11 @@ function createCartItemElement({ sku, name, salePrice }) {
   return li;
 }
 
-function fetchItemResults(itemId) {
-  const resultado = fetchItem(itemId);
+async function fetchItemResults(ItemID) {
+  const resultado = fetchItem(ItemID);
   const sectionItens = document.querySelector('.cart__items');
   const resulcart = createCartItemElement(
-    { sku: resultado.id, name: resultado.title, salePrice: resultado.price },
+{ sku: resultado.id, name: resultado.title, salePrice: resultado.price },
   );
   sectionItens.appendChild(resulcart);
   saveCartItems(sectionItens.innerHTML);
@@ -45,38 +45,39 @@ function createProductItemElement({ sku, name, image }) {
   btAddCart.addEventListener('click', () => fetchItemResults(sku));
 
   section.appendChild(btAddCart);
-  fetchProducts();
+  
   return section;
 }
 
-function fetchProductsResults() {
+async function fetchResults() {
   const sectionItens = document.querySelector('.items');
  sectionItens.innerHTML = '<ol class="loading"><li>Carregando</li></ol>';
   setTimeout(async () => {
     const resultado = await fetchProducts('computador');
     sectionItens.innerHTML = '';
-    resultado.results.forEach((item) =>
+    resultado.results.forEach((item) => 
       sectionItens.appendChild(
         createProductItemElement({ sku: item.id, name: item.title, image: item.thumbnail }),
       ));
   }, 2000);
+}
 
 function getSkuFromProductItem(item) {
   return item.querySelector('span.item__sku').innerText;
 }
-  getSkuFromProductItem();
 
-function startCart() {
-  const cartItens = getSavedCartItems();
-  const sectionItens = document.querySelector('.cart__items');
-  sectionItens.innerHTML = cartItens;
-  console.log(sectionItens.children);
+function playCart() {
+  const cartItems = getSavedCartItems();
+  const sectionItems = document.querySelector('.cart__items');
+  sectionItems.innerHTML = cartItems;
+  console.log(sectionItems.children);
   for (let i = 0; i < sectionItens.children.length; i += 1) {
-    sectionItens.children[i].addEventListener('click', cartItemClickListener);
+  sectionItems.children[i].addEventListener('click', cartItemClickListener);
   }
 }
 
 window.onload = () => {
-  fetchProductsResults();
-  startCart();
+  fetchResults();
+  playCart();
+  getSkuFromProductItem();
 };
