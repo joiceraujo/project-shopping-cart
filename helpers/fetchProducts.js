@@ -1,5 +1,5 @@
-const fetchProducts = (QUERY) => {
-  fetch(`https://api.mercadolibre.com/sites/MLB/search?q=${QUERY}`)
+const fetchProducts = ($QUERY) => {
+  fetch(`https://api.mercadolibre.com/sites/MLB/search?q=${$QUERY}`)
   .then((results) => results.json())
   .catch((error) => error);
 };
