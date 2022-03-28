@@ -71,7 +71,7 @@ function playCart() {
   const sectionItems = document.querySelector('.cart__items');
   sectionItems.innerHTML = cartItems;
   console.log(sectionItems.children);
-  for (let i = 0; i < sectionItens.children.length; i += 1) {
+  for (let i = 0; i < sectionItems.children.length; i += 1) {
   sectionItems.children[i].addEventListener('click', cartItemClickListener);
   }
 }
@@ -79,5 +79,4 @@ function playCart() {
 window.onload = () => {
   fetchResults();
   playCart();
-  getSkuFromProductItem();
 };
