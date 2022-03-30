@@ -12,7 +12,7 @@ describe('2 - Teste a função fecthItem', () => {
 
  it('2 - Execute a função fetchItem com o argumento "computador" e teste se fetch foi chamada', () => {
    fetchItem('MLB1615760527');
-   return expect(fetch).toHaveBeenCalled();      
+   expect(fetch).toHaveBeenCalled();      
  })
 
  it('3 - Teste se, ao chamar a função fetchItem com o argumento "computador", a função fetch utiliza o endpoint "https://api.mercadolibre.com/sites/MLB/search?q=computador"', async () => {
@@ -20,8 +20,8 @@ describe('2 - Teste a função fecthItem', () => {
    expect(fetch).toHaveBeenLastCalledWith('https://api.mercadolibre.com/items/MLB1615760527');
  })
 
-it('Testando se o retorno da função fetchItem com o argumento "MLB1615760527" é uma estrutura de dados igual ao objeto item, que já está importado no arquivo' , () => {
-  const result = fetchItem('MLB1615760527');
+it('Testando se o retorno da função fetchItem com o argumento "MLB1615760527" é uma estrutura de dados igual ao objeto item, que já está importado no arquivo', async () => {
+  const result = await fetchItem('MLB1615760527');
   expect(result).toEqual(item);
 })
 

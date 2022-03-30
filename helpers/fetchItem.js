@@ -1,7 +1,9 @@
-const fetchItem = (ItemID) => {
-  fetch(`https://api.mercadolibre.com/items/${ItemID}`)
-  .then((response) => response.json())
-  .catch((error) => error); 
+const fetchItem = async (id) => {
+  const url = `https://api.mercadolibre.com/items/${id}`;
+  return fetch(url)
+    .then((response) => response.json())
+    .then((data) => data)
+    .catch((error) => error);
 };
 
 if (typeof module !== 'undefined') {
