@@ -64,8 +64,8 @@ const allProducts = () => {
 // }
 
 const setSavedCart = () => {
-  const memory = getSavedCartItems();
-  itemElements.innerHTML = memory;
+  const saved = getSavedCartItems();
+  itemElements.innerHTML = saved;
 };
 
 const clearCart = document.querySelector('.empty-cart');
